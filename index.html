@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>햇살을 좋아하는 사람</title>
+  <meta
+    name="description"
+    content="황금빛, 과일, 산, 그리고 사람들과의 대화를 좋아하는 사람의 소개 페이지입니다."
+  />
+
+  <!-- 한국어 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --cream: #fffaf0;
+      --soft-cream: #fff5dc;
+      --gold: #d9a441;
+      --deep-gold: #a9741d;
+      --peach: #f6d9c3;
+      --sage: #b9c9ad;
+      --olive: #60734e;
+      --brown: #544432;
+      --white: rgba(255, 255, 255, 0.76);
+      --shadow: 0 18px 45px rgba(105, 79, 31, 0.13);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--brown);
+      background:
+        radial-gradient(circle at top left, #fff1c6 0%, transparent 34%),
+        radial-gradient(circle at right 32%, #f9dfd0 0%, transparent 28%),
+        var(--cream);
+      font-family: "Gowun Dodum", sans-serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 상단 메뉴 */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 100%;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 250, 240, 0.76);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(217, 164, 65, 0.16);
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--deep-gold);
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--deep-gold);
+    }
+
+    /* 첫 화면 */
+    .hero {
+      min-height: 100vh;
+      padding: 130px 7% 75px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--deep-gold);
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+    }
+
+    .eyebrow::before {
+      content: "✦";
+      font-size: 1rem;
+    }
+
+    h1 {
+      margin: 18px 0 24px;
+      font-family: "Playfair Display", "Gowun Dodum", serif;
+      font-size: clamp(3.2rem, 7vw, 6.4rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      color: #594222;
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
+    .hero-description {
+      max-width: 540px;
+      font-size: 1.08rem;
+      color: #695946;
+      word-break: keep-all;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-size: 0.94rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      color: white;
+      background: var(--deep-gold);
+      box-shadow: 0 8px 18px rgba(169, 116, 29, 0.23);
+    }
+
+    .button-outline {
+      border: 1px solid rgba(169, 116, 29, 0.35);
+      background: rgba(255, 255, 255, 0.45);
+      color: var(--deep-gold);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      min-height: 510px;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      min-height: 510px;
+      display: block;
+      object-fit: cover;
+      border-radius: 180px 180px 30px 30px;
+      box-shadow: var(--shadow);
+      filter: saturate(0.88) sepia(0.08);
+    }
+
+    .image-note {
+      position: absolute;
+      bottom: 25px;
+      left: -28px;
+      max-width: 250px;
+      padding: 17px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 14px;
+      background: rgba(255, 250, 240, 0.85);
+      box-shadow: 0 10px 28px rgba(100, 72, 31, 0.12);
+      backdrop-filter: blur(8px);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .image-note strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--deep-gold);
+    }
+
+    /* 공통 섹션 */
+    section {
+      padding: 105px 7%;
+    }
+
+    .section-inner {
+      max-width: 1260px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      color: var(--deep-gold);
+      font-family: "Playfair Display", "Gowun Dodum", serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      max-width: 620px;
+      margin: 0 0 42px;
+      color: #766651;
+      word-break: keep-all;
+    }
+
+    /* 좋아하는 것 */
+    .favorites {
+      background: rgba(255, 238, 205, 0.4);
+    }
+
+    .favorite-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .favorite-card {
+      overflow: hidden;
+      min-height: 390px;
+      position: relative;
+      border-radius: 22px;
+      background: #ddd;
+      box-shadow: 0 12px 30px rgba(99, 73, 35, 0.1);
+      transition: transform 0.25s ease;
+    }
+
+    .favorite-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .favorite-card img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      filter: saturate(0.78) sepia(0.1);
+      transition: transform 0.5s ease;
+    }
+
+    .favorite-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .favorite-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(53, 40, 22, 0.72), rgba(53, 40, 22, 0.02) 65%);
+    }
+
+    .card-text {
+      position: absolute;
+      z-index: 1;
+      right: 24px;
+      bottom: 22px;
+      left: 24px;
+      color: white;
+    }
+
+    .card-number {
+      color: #ffe1a0;
+      font-family: "Playfair Display", serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+    }
+
+    .card-text h3 {
+      margin: 3px 0 0;
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+
+    /* 소개 문구 */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .story-image {
+      width: 100%;
+      min-height: 450px;
+      object-fit: cover;
+      border-radius: 24px 110px 24px 110px;
+      box-shadow: var(--shadow);
+      filter: saturate(0.82) sepia(0.08);
+    }
+
+    .quote {
+      margin: 0 0 26px;
+      color: #5f4a2f;
+      font-family: "Playfair Display", "Gowun Dodum", serif;
+      font-size: clamp(1.7rem, 3vw, 2.7rem);
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+
+    .story-text p {
+      color: #73624e;
+      word-break: keep-all;
+    }
+
+    /* 연락 영역 */
+    .contact {
+      padding-bottom: 120px;
+      text-align: center;
+    }
+
+    .contact-box {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 65px 30px;
+      border: 1px solid rgba(217, 164, 65, 0.18);
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(255, 238, 195, 0.82), rgba(246, 217, 195, 0.7)),
+        var(--soft-cream);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box p {
+      margin: 0 auto 25px;
+      max-width: 550px;
+      color: #715c42;
+      word-break: keep-all;
+    }
+
+    footer {
+      padding: 22px;
+      border-top: 1px solid rgba(217, 164, 65, 0.15);
+      color: #8c7d68;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    /* 모바일 */
+    @media (max-width: 900px) {
+      .hero,
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 42px;
+      }
+
+      .hero-image-wrap,
+      .hero-image {
+        min-height: 430px;
+      }
+
+      .hero-image-wrap {
+        max-width: 620px;
+      }
+
+      .favorite-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .story-grid {
+        gap: 42px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 16px 6%;
+      }
+
+      .nav-links {
+        gap: 13px;
+        font-size: 0.78rem;
+      }
+
+      .hero,
+      section {
+        padding-right: 6%;
+        padding-left: 6%;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .hero-image-wrap,
+      .hero-image {
+        min-height: 380px;
+      }
+
+      .hero-image {
+        border-radius: 100px 100px 22px 22px;
+      }
+
+      .image-note {
+        bottom: 18px;
+        left: 14px;
+        max-width: 220px;
+      }
+
+      .favorite-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .favorite-card {
+        min-height: 320px;
+      }
+
+      .story-image {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <a href="#home" class="logo">Golden Days</a>
+
+    <nav class="nav-links" aria-label="메인 메뉴">
+      <a href="#favorites">좋아하는 것</a>
+      <a href="#story">나의 이야기</a>
+      <a href="#contact">인사하기</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 첫 화면 -->
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <div class="eyebrow">A little introduction</div>
+
+        <h1>
+          햇살처럼<br />
+          <span>따뜻한 순간</span>을<br />
+          좋아합니다.
+        </h1>
+
+        <p class="hero-description">
+          황금빛으로 물드는 풍경, 싱그러운 과일, 조용히 이어지는 산길,
+          그리고 사람들과 나누는 진심 어린 이야기를 좋아하는 사람입니다.
+          일상 속 작은 아름다움을 발견하며 살아갑니다.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="button button-primary" href="#favorites">내가 좋아하는 것</a>
+          <a class="button button-outline" href="#contact">함께 이야기해요</a>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <!-- 필요하면 사진 URL을 원하는 이미지로 바꿔 사용할 수 있습니다. -->
+        <img
+          class="hero-image"
+          src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
+          alt="황금빛 햇살이 비추는 산과 들판"
+        />
+        <div class="image-note">
+          <strong>Golden hour</strong>
+          하루 중 가장 부드럽고 따뜻한 빛을 좋아합니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 좋아하는 것 -->
+    <section class="favorites" id="favorites">
+      <div class="section-inner">
+        <p class="eyebrow">Things I love</p>
+        <h2 class="section-title">나를 설레게 하는 것들</h2>
+        <p class="section-intro">
+          빛나는 색감과 자연의 향기, 낯선 길에서 만나는 풍경,
+          그리고 마음을 나누는 대화가 저의 일상을 조금 더 풍요롭게 만듭니다.
+        </p>
+
+        <div class="favorite-grid">
+          <article class="favorite-card">
+            <img
+              src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=85"
+              alt="따뜻한 햇빛을 받는 황금빛 들판"
+            />
+            <div class="card-text">
+              <span class="card-number">01</span>
+              <h3>황금빛 햇살</h3>
+            </div>
+          </article>
+
+          <article class="favorite-card">
+            <img
+              src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=85"
+              alt="싱그러운 과일들"
+            />
+            <div class="card-text">
+              <span class="card-number">02</span>
+              <h3>계절의 과일</h3>
+            </div>
+          </article>
+
+          <article class="favorite-card">
+            <img
+              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85"
+              alt="구름과 산봉우리"
+            />
+            <div class="card-text">
+              <span class="card-number">03</span>
+              <h3>깊고 푸른 산</h3>
+            </div>
+          </article>
+
+          <article class="favorite-card">
+            <img
+              src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85"
+              alt="함께 이야기를 나누는 사람들"
+            />
+            <div class="card-text">
+              <span class="card-number">04</span>
+              <h3>따뜻한 대화</h3>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 나의 이야기 -->
+    <section id="story">
+      <div class="section-inner story-grid">
+        <img
+          class="story-image"
+          src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1100&q=85"
+          alt="호수와 산이 어우러진 평화로운 자연 풍경"
+        />
+
+        <div class="story-text">
+          <p class="eyebrow">My small philosophy</p>
+          <h2 class="section-title">자연을 닮은 마음으로</h2>
+
+          <blockquote class="quote">
+            “좋은 풍경과 좋은 이야기는<br />
+            오래도록 마음에 남습니다.”
+          </blockquote>
+
+          <p>
+            산을 오르며 마주하는 넓은 하늘과 계절마다 달라지는 풍경을 좋아합니다.
+            천천히 걷고, 눈앞의 색을 기억하고, 그 순간의 공기를 깊게 들이마시는
+            시간을 소중하게 생각합니다.
+          </p>
+
+          <p>
+            그리고 무엇보다 사람들의 이야기를 듣는 것을 좋아합니다.
+            가벼운 웃음부터 오래 품어 온 생각까지, 서로의 마음을 나누는 대화 속에서
+            새로운 시선과 따뜻한 에너지를 얻습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 연락 -->
+    <section class="contact" id="contact">
+      <div class="contact-box">
+        <p class="eyebrow">Let’s talk</p>
+        <h2 class="section-title">우리의 이야기를 시작해요</h2>
+        <p>
+          좋아하는 과일, 기억에 남는 산길, 오늘 하루를 따뜻하게 만든 작은 순간까지.
+          편안한 이야기라면 언제든 환영합니다.
+        </p>
+
+        <!-- 아래 이메일 주소를 본인의 이메일로 변경하세요. -->
+        <a class="button button-primary" href="mailto:kufosan@daum.net">
+          hello@example.com
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 MovingHand Made with warm sunlight.
+  </footer>
+</body>
+</html>
